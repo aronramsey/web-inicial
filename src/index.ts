@@ -1,5 +1,5 @@
-import './styles/style.css'
-import { translations } from './translations'
+import './styles/style.css';
+import { translations } from './translations';
 
 let currentLang = 'es'
 
@@ -29,7 +29,7 @@ function updateContent() {
     <header>
       <nav>
         <div class="logo">
-          <img src="/src/assets/images/robot-logo.svg" alt="Robot Trading Logo" />
+          <img src="src/assets/images/robot-logo.svg" alt="Robot Trading Logo" />
         </div>
         <div class="nav-links">
           <a href="#docs">${t.documentation}</a>
