@@ -29,7 +29,7 @@ function updateContent() {
     <header>
       <nav>
         <div class="logo">
-          <img src="src/assets/images/robot-logo.svg" alt="Robot Trading Logo" />
+          <img src="/images/robot-logo.svg" alt="Robot Trading Logo" />
         </div>
         <div class="nav-links">
           <a href="#docs">${t.documentation}</a>
@@ -64,7 +64,7 @@ function updateContent() {
           </div>
         </div>
         <div class="hero-image">
-          <img src="/src/assets/images/robot-trader.png" alt="Robot Trader" />
+          <img src="/images/robot-trader.png" alt="Robot Trader" />
         </div>
       </div>
     </main>
