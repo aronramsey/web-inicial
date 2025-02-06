@@ -106,7 +106,7 @@
   /* Sección Hero */
   .hero-section {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.8fr 1.2fr;
     gap: 2rem;
     padding: 4rem 0;
     min-height: 80vh;
@@ -196,21 +196,25 @@
     background: rgba(10,10,10,0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 1rem 0;
+    padding: 0.3rem 0;
     z-index: 1000;
+    overflow: hidden;
+    height: 30px;
   }
   
   .ticker-wrapper {
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
+    height: 100%;
   }
   
   .ticker-content {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 3rem;
-    padding: 0 2rem;
+    height: 100%;
+    justify-content: space-around;
+    padding: 0 1rem;
+    width: 100%;
   }
   
   .ticker-item {
@@ -218,6 +222,29 @@
     font-family: 'Roboto Mono', monospace;
     font-size: 0.9rem;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  /* Solo aplicar animación cuando el contenido es más ancho que la pantalla */
+  @media (max-width: 1200px) {
+    .ticker-content {
+      justify-content: flex-start;
+      animation: ticker 20s linear infinite;
+      padding-right: 100%;
+    }
+    
+    .ticker-item {
+      padding: 0 1rem;
+    }
+  }
+  
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
   
   /* Efectos de brillo */
@@ -236,20 +263,50 @@
   
   /* Media queries */
   @media (max-width: 968px) {
+    .container {
+      padding: 0 1rem;
+    }
+
     .hero-section {
       grid-template-columns: 1fr;
+      padding: 2rem 0;
+      min-height: auto;
+      gap: 3rem;
     }
     
     .nav-links {
-      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 70%;
+      background: var(--bg-color);
+      flex-direction: column;
+      padding: 2rem;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .nav-links.active {
+      right: 0;
     }
     
     .hero-content h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
     
     .info-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .info-card {
+      padding: 1.2rem;
+    }
+
+    .info-card p {
+      font-size: 1rem;
     }
 
     .social-buttons {
@@ -267,8 +324,93 @@
     }
 
     .ticker-content {
-      gap: 2rem;
+      gap: 1.5rem;
       font-size: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .ticker-item {
+      text-align: center;
+    }
+
+    /* Menú hamburguesa */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--text-color);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+
+  /* Tablets */
+  @media (min-width: 669px) and (max-width: 968px) {
+    .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    .ticker-content {
+      flex-wrap: nowrap;
+    }
+  }
+
+  /* Teléfonos pequeños */
+  @media (max-width: 480px) {
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+
+    .phase {
+      padding: 0.8rem;
+    }
+
+    .phase span {
+      font-size: 1rem;
+    }
+
+    .phase h3 {
+      font-size: 0.9rem;
+    }
+
+    .connect-wallet, .lang-toggle {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .social-buttons {
+      display: none;
+    }
+  }
+
+  /* Ajustes de altura para dispositivos móviles */
+  @media (max-height: 600px) {
+    .hero-section {
+      min-height: auto;
+      padding: 1rem 0;
     }
   }
 
@@ -286,4 +428,23 @@
   .lang-toggle:hover {
     background: var(--primary-color);
     color: #000000;
+  }
+
+  /* Ajuste del ticker para móviles */
+  @media (max-width: 768px) {
+    .ticker {
+      height: 25px;
+      padding: 0;
+    }
+
+    .ticker-content {
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 0.5rem;
+      animation: ticker 8s linear infinite;
+    }
+
+    .ticker-item {
+      font-size: 0.7rem;
+    }
   }
