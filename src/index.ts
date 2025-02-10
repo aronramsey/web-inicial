@@ -40,7 +40,7 @@ function updateContent() {
         <div class="nav-links">
           <a href="https://doc.agloot.tech" target="_blank">${t.documentation}</a>
           <a href="https://app.safe.global/balances?safe=base:0x943a3590515986d576e8d1e5864ec2d8a28ea4ac" target="_blank">${t.wallet}</a>
-          <a href="#terminal">${t.chat}</a>
+          <a href="#" onclick="showTerminalModal(event)">${t.chat}</a>
           <button class="lang-toggle" onclick="toggleLanguage()">${currentLang === 'es' ? 'EN' : 'ES'}</button>
           <button class="connect-wallet" onclick="window.open('https://creator.bid/agents/6721e0c8200c86fa5752a766', '_blank')">${t.buy}</button>
         </div>
@@ -85,6 +85,15 @@ function updateContent() {
         </div>
       </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="terminalModal">
+      <div class="modal-content">
+        <h2 class="modal-title">${t.terminalModal.title}</h2>
+        <p class="modal-text">${t.terminalModal.text}</p>
+        <button class="modal-close" onclick="closeTerminalModal()">${t.terminalModal.close}</button>
+      </div>
+    </div>
   </div>
 `
 }
@@ -99,6 +108,22 @@ function toggleMenu() {
 
 // Hacer la función toggleMenu accesible globalmente
 ;(window as any).toggleMenu = toggleMenu
+
+// Añadir funciones para el modal
+function showTerminalModal(event: Event) {
+  event.preventDefault()
+  const modal = document.getElementById('terminalModal')
+  modal?.classList.add('active')
+}
+
+function closeTerminalModal() {
+  const modal = document.getElementById('terminalModal')
+  modal?.classList.remove('active')
+}
+
+// Hacer las funciones accesibles globalmente
+;(window as any).showTerminalModal = showTerminalModal
+;(window as any).closeTerminalModal = closeTerminalModal
 
 // Inicializar contenido
 updateContent()

@@ -21,6 +21,11 @@ export const translations = {
       currentPrice: "PRECIO ACTUAL: $0.0007663",
       marketCap: "CAP. MERCADO: $16,116.00",
       holders: "HOLDERS: 96"
+    },
+    terminalModal: {
+      title: "Terminal en Desarrollo",
+      text: "La terminal está actualmente en desarrollo. Para acceder necesitarás 10,000 AGLOOT tokens. ¡Vuelve pronto!",
+      close: "Cerrar"
     }
   },
   en: {
@@ -45,6 +50,11 @@ export const translations = {
       currentPrice: "CURRENT PRICE: $0.0007663",
       marketCap: "MARKET CAP: $16,116.00",
       holders: "HOLDERS: 96"
+    },
+    terminalModal: {
+      title: "Terminal Under Development",
+      text: "The terminal is currently under development. You will need 10,000 AGLOOT tokens to access. Check back soon!",
+      close: "Close"
     }
   }
 } 
