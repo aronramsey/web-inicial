@@ -1,0 +1,253 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+  background: var(--background-color);
+  color: var(--text-color);
+  width: 100%;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+  position: relative;
+  overflow-y: auto;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: var(--primary-color);
+  color: white;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: var(--message-bot-background, #2A2A2A);
+  color: var(--text-color);
+  border-bottom-left-radius: 0.3rem;
+}
+
+.message-content {
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+.message-timestamp {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  align-self: flex-end;
+  margin-top: 0.2rem;
+}
+
+.welcome-message {
+  text-align: center;
+  padding: 2rem;
+  opacity: 0.8;
+}
+
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 584px;
+  padding: 1rem;
+  z-index: 10;
+  background: var(--background-color);
+}
+
+.chat-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  background: var(--input-background);
+  border-radius: 24px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.chat-input {
+  flex: 1;
+  min-height: 20px;
+  max-height: 150px;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+}
+
+.send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.send-button:hover {
+  background: var(--primary-color-hover, var(--primary-color));
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.connect-container {
+  display: flex;
+  height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+  background: var(--background-color);
+  color: var(--text-color);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.connect-content {
+  text-align: center;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.connect-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.connect-content p {
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.connect-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wallet-button:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color-hover);
+}
+
+.wallet-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
+  
+  .chat-input-container {
+    padding: 0.8rem;
+  }
+  
+  .chat-messages {
+    padding: 0.8rem;
+    padding-bottom: 80px;
+  }
+  
+  .chat-container {
+    height: calc(100vh - var(--header-height-mobile));
+    margin-top: var(--header-height-mobile);
+  }
+  
+  .chat-main {
+    padding: 0 1rem;
+  }
+  
+  .message-content {
+    padding: 0 1rem;
+  }
+  
+  .connect-content {
+    padding: 1rem;
+  }
+  
+  .wallet-button {
+    padding: 0.75rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .chat-messages {
+    gap: 1rem;
+    padding-bottom: 100px;
+  }
+  
+  .message {
+    padding: 1rem 0;
+  }
+  
+  .chat-input-container {
+    padding: 1rem 0;
+  }
+}
+
+/* Altura pequeña */
+@media (max-height: 600px) {
+  .chat-messages {
+    padding-bottom: 70px;
+  }
+  
+  .chat-input-container {
+    padding: 0.5rem;
+  }
+} 
