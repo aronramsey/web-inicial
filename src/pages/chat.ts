@@ -178,7 +178,7 @@ export function renderChat({ currentLang }: RenderChatProps) {
             <button 
               class="send-button ${isLoading ? 'loading' : ''}" 
               onclick="handleSendMessage()"
-              disabled="${isLoading}"
+              ${isLoading ? 'disabled' : ''}
             >
               <svg width="20" height="20" viewBox="0 0 24 24">
                 <path d="M2 12L20 4L12 20L10 14L2 12Z" fill="currentColor"/>
